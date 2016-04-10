@@ -12,18 +12,18 @@ const source = {
 function collect(connect, monitor) {
   return {
     connectDragSource: connect.dragSource(),
-    item: monitor.getItem()
+    isDragging: monitor.isDragging()
   }
 }
 
 class Draggable extends Component {
   render() {
-    const { connectDragSource, hide, item, children } = this.props;
+    const { connectDragSource, hide, isDragging, children } = this.props;
     return connectDragSource(
       <div>
         <div>Drag me</div>
-        <div>
-          {item && !hide && <ConnectedDraggable hide />}
+        <div style={{marginLeft: '10px'}}>
+          {isDragging && !hide && <ConnectedDraggable hide />}
         </div>
       </div>
     )
